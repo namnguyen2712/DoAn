@@ -77,3 +77,8 @@ Route::get('import-detail/{id}',[
 	'uses'=> 'importController@show',
 	'as' => 'backend.import-detail'
 ]);
+
+Route::get('/search-supply-import',[
+	'uses'=> 'importController@search_supply_import',
+	'as' => 'backend.search-supply-import'
+]);

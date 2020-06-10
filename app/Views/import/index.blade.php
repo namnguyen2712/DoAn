@@ -8,7 +8,7 @@
 		<i class="fa fa-plus"></i> <span>Tạo phiếu nhập hàng</span>
 	</a>
 </div>
-<div class="">
+<div class="col-lg-9">
 	<a href="" title="Tạo hóa đơn" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Xuất file Excel</span>
 	</a>
@@ -62,14 +62,29 @@
 				<option value="12" >
 					Tháng 12
 				</option>
-
 			</select>
 	</div>
 	<div class="col-lg-1 ">
 		<button type="submit" class="btn btn-success" name="button">Nạp</button>
 	</div>
 		</form>
-
+<div class="col-lg-12 row box-body">
+	<div class="col-lg-4">
+		<form  action="{{route('backend.search-supply-import')}}" method="GET">
+			<input type="text" name="name_supply" class="form-control" placeholder="Nhập tên nhà cung cấp cần tìm kiếm">
+		</form>
+	</div>
+	<div class="col-lg-4">
+		<form  action="" method="GET">
+			<input type="text" name="name_employee" placeholder="Nhập tên nhân viên lập cần tìm kiếm">
+		</form>
+	</div>
+	<div class="col-lg-4">
+		<form  action="" method="GET">
+			<input type="text" name="id" placeholder="Nhập số phiếu nhập cần tìm kiếm">
+		</form>
+	</div>
+</div>
 
 	<table class="table table-hover">
 		<thead>

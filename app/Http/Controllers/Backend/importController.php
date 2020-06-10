@@ -247,4 +247,14 @@ class ImportController extends Controller
              'import'=>$import
          ]);
     }
+    public function search_supply_import(Request $request){
+        $name_supply = $request->name_supply;
+        if($name_supply != ''){
+            $supply=supply::where('name','like','%'.$name_supply.'%')->select('id')->first()->toArray();
+            $import=import::where('id_supply',$supply)->paginate(10);
+            return view('import.index',[
+                'import'=>$import
+            ]);
+        }
+    }
 }
