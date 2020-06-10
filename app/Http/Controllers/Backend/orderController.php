@@ -248,4 +248,49 @@ class orderController extends Controller
             'customer' => $customer
         ]);
     }
+    public function get_order_date(Request $request){
+         $date = $request->date;
+         $orrder= order::whereDate('created_at',$date)->paginate(10);
+         return view('order.index',[
+             'order'=>$orrder
+         ]);
+    }
+    public function get_order_month(Request $request){
+         $month = $request->month;
+         $order= order::whereMonth('created_at',$month)->paginate(10);
+         return view('order.index',[
+             'order'=>$order
+         ]);
+    }
+    public function search_customer_order(Request $request){
+        $phone_customer = $request->phone_customer;
+        if($phone_customer != ''){
+            $customer=customer::where('phone','like','%'.$phone_customer.'%')->select('id')->first()->toArray();
+            $order=order::where('cus_id',$customer)->paginate(10);
+            return view('order.index',[
+                'order'=>$order
+            ]);
+        }
+    }
+    public function search_employee_order(Request $request){
+        $name_employee = $request->name_employee;
+        if($name_employee != ''){
+            $employee=user::where('username','like','%'.$name_employee.'%')->select('id')->first()->toArray();
+            $order=order::where('employee_id',$employee)->paginate(10);
+            return view('order.index',[
+                'order'=>$order
+            ]);
+        }
+    }
+    public function search_order(Request $request){
+        $id = $request->id;
+        if($id != ''){
+            $order=order::where('id',$id)->paginate(1);
+
+            return view('order.index',[
+                'order'=>$order
+            ]);
+        }
+    }
+
 }

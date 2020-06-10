@@ -69,3 +69,23 @@ Route::get('order-detail/{id}',[
 	'uses'=> 'orderController@show',
 	'as' => 'backend.order-detail'
 ]);
+Route::get('/search-customer-order',[
+	'uses'=> 'orderController@search_customer_order',
+	'as' => 'backend.search-customer-order'
+]);
+Route::get('/search-employee-order',[
+	'uses'=> 'orderController@search_employee_order',
+	'as' => 'backend.search-employee-order'
+]);
+Route::get('/search-order',[
+	'uses'=> 'orderController@search_order',
+	'as' => 'backend.search-order'
+]);
+Route::get('/order-get-date',[
+	'uses'=> 'orderController@get_order_date',
+	'as' => 'backend.order-get-date'
+]);
+Route::get('/order-get-month',[
+	'uses'=> 'orderController@get_order_month',
+	'as' => 'backend.order-get-month'
+]);

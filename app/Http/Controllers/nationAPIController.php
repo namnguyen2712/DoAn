@@ -37,7 +37,7 @@ class nationAPIController extends Controller
 
         $this->validate($request,
              [
-                'name' => 'required|min:3|max:50|unique:category'
+                'name' => 'required|min:1|max:50|unique:category'
             ],
             [
                'name.required' => 'Bạn chưa nhập dữ liệu',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Import;
 use App\Models\Supply;
 use App\Models\Employee;
+use App\Models\User;
 use App\Models\Products;
 use App\Models\Import_detail;
 use App\Helper\Cart;
@@ -252,6 +253,26 @@ class ImportController extends Controller
         if($name_supply != ''){
             $supply=supply::where('name','like','%'.$name_supply.'%')->select('id')->first()->toArray();
             $import=import::where('id_supply',$supply)->paginate(10);
+            return view('import.index',[
+                'import'=>$import
+            ]);
+        }
+    }
+    public function search_employee_import(Request $request){
+        $name_employee = $request->name_employee;
+        if($name_employee != ''){
+            $employee=user::where('username','like','%'.$name_employee.'%')->select('id')->first()->toArray();
+            $import=import::where('id_employee',$employee)->paginate(10);
+            return view('import.index',[
+                'import'=>$import
+            ]);
+        }
+    }
+    public function search_import(Request $request){
+        $id = $request->id;
+        if($id != ''){
+            $import=import::where('id',$id)->paginate(1);
+
             return view('import.index',[
                 'import'=>$import
             ]);

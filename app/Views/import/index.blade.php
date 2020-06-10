@@ -75,13 +75,13 @@
 		</form>
 	</div>
 	<div class="col-lg-4">
-		<form  action="" method="GET">
-			<input type="text" name="name_employee" placeholder="Nhập tên nhân viên lập cần tìm kiếm">
+		<form  action="{{route('backend.search-employee-import')}}" method="GET">
+			<input type="text" class="form-control" name="name_employee" placeholder="Nhập tên nhân viên lập cần tìm kiếm">
 		</form>
 	</div>
 	<div class="col-lg-4">
-		<form  action="" method="GET">
-			<input type="text" name="id" placeholder="Nhập số phiếu nhập cần tìm kiếm">
+		<form  action="{{route('backend.search-import')}}" method="GET">
+			<input type="text" class="form-control" name="id" placeholder="Nhập số phiếu nhập cần tìm kiếm">
 		</form>
 	</div>
 </div>
@@ -136,12 +136,12 @@
 		@endforeach
 			<tr>
 				<td></td>
-	  		  <td></td>
-	  		  <td></td>
-	  		  <td></td>
-	  		  <td>Tổng:{{ number_format($sum_i)}}</td>
-	  		  <td></td>
-	  		  <td></td>
+		  		<td></td>
+		  		<td></td>
+		  		<td></td>
+		  		<td>Tổng:{{ number_format($sum_i)}}</td>
+		  		<td></td>
+		  		<td></td>
 			</tr>
 		</tbody>
 		<tfoot>

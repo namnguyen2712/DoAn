@@ -82,3 +82,11 @@ Route::get('/search-supply-import',[
 	'uses'=> 'importController@search_supply_import',
 	'as' => 'backend.search-supply-import'
 ]);
+Route::get('/search-employee-import',[
+	'uses'=> 'importController@search_employee_import',
+	'as' => 'backend.search-employee-import'
+]);
+Route::get('/search-import',[
+	'uses'=> 'importController@search_import',
+	'as' => 'backend.search-import'
+]);

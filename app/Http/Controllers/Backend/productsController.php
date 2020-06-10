@@ -206,7 +206,7 @@ class productsController extends Controller
 
      public function report()
     {
-        $product= products::orderBy('quantity','DESC')->get();
+        $product= products::orderBy('quantity','DESC')->where('quantity','>',0)->get();
         return view('products.report',[
             'products'=>$product,
             'cats'=>category::all(),
