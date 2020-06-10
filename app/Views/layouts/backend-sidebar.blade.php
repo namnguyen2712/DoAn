@@ -11,13 +11,24 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
+        <<?php
+      $roleUser = DB::table('user')
+      ->join('user_roles','user.id','=','user_roles.user_id')
+      ->join('roles','user_roles.role_id','=','roles.id')
+      ->where('user.id','=',Auth()->user()->id)
+      ->select('*')
+      ->first();
+      ?>
+
+
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">THANH CÔNG CỤ</li>
+            <li class="header">{{ $roleUser->name}}</li>
             <!-- /.thống kê -->
 
-            <li class="">
+            <li class="<?php if($roleUser->id!=1) echo "hidden"; ?>">
                 <a href="{{route('backend.home')}}">
                     <i class="fa fa-home"></i> <span>Trang chủ</span>
                 </a>
@@ -28,7 +39,7 @@
             <!-- NCC -->
 
 
-            <li class="">
+            <li class="<?php if($roleUser->id!=1 && $roleUser->id!=4) echo "hidden"; ?>">
                 <a href="{{route('backend.supply')}}">
                     <i class="glyphicon glyphicon-save"></i> <span>Quản lý nhà cung cấp</span>
                 </a>
@@ -37,7 +48,7 @@
             <!-- /.Categorys -->
 
 
-            <li class="">
+            <li class="<?php if($roleUser->id!=1 && $roleUser->id!=4) echo "hidden"; ?>">
                 <a href="{{ route('backend.category') }}">
                     <i class="glyphicon glyphicon-th-list"></i> <span>Quản lý danh mục</span>
                 </a>
@@ -60,15 +71,15 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('backend.products') }}"><i class="fa fa-medkit"></i> Sản phẩm</a></li>
-            <li><a href="{{route('backend.unit')}}"><i class="fa fa-balance-scale"></i> Đơn vị tính</a></li>
-            <li><a href="{{route('backend.nation')}}"><i class="fa fa-flag"></i> Xuất xứ</a></li>
+            <li ><a href="{{route('backend.unit')}}"><i class="fa fa-balance-scale"></i> Đơn vị tính</a></li>
+            <li ><a href="{{route('backend.nation')}}"><i class="fa fa-flag"></i> Xuất xứ</a></li>
           </ul>
         </li>
 
             <!-- Nhap hang -->
 
 
-            <li>
+            <li <?php if($roleUser->id!=1 && $roleUser->id!=4) echo "hidden"; ?>>
                 <a href="{{route('backend.import')}}">
                     <i class="fa fa-cart-arrow-down"></i> <span>Quản lý nhập hàng</span>
                 </a>
@@ -77,7 +88,7 @@
             <!-- /.Orders -->
 
 
-            <li>
+            <li class="<?php if($roleUser->id!=1 && $roleUser->id!=3) echo "hidden"; ?>" >
                 <a href="{{route('backend.order')}}">
                     <i class="glyphicon glyphicon-shopping-cart"></i> <span>Quản lý bán hàng</span>
                 </a>
@@ -88,7 +99,7 @@
 
 
 
-            <li class="treeview">
+            <li class="treeview <?php if($roleUser->id!=1 && $roleUser->id!=3) echo "hidden"; ?>">
             <a href="#">
               <i class="fa fa-user"></i>
               <span>Quản lý tài khoản</span>
@@ -97,13 +108,13 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{route('backend.user')}}"><i class="fa fa-user-md"></i> Nhân viên</a></li>
-              <li><a href="{{route('backend.customer')}}"><i class="fa fa-user-plus"></i> Khách hàng</a></li>
+              <li class="<?php if($roleUser->id!=1) echo "hidden"; ?>"><a href="{{route('backend.user')}}"><i class="fa fa-user-md"></i> Nhân viên</a></li>
+              <li  class="<?php if($roleUser->id!=1 && $roleUser->id!=3) echo "hidden"; ?>" ><a href="{{route('backend.customer')}}"><i class="fa fa-user-plus"></i> Khách hàng</a></li>
 
             </ul>
           </li>
 
-          <li class="treeview">
+          <li class="treeview <?php if($roleUser->id!=1) echo "hidden"; ?>">
           <a href="#">
             <i class="fa fa-code-fork"></i>
             <span>Phân quyền</span>
