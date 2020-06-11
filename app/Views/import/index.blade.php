@@ -9,7 +9,7 @@
 	</a>
 </div>
 <div class="col-lg-9">
-	<a href="" title="Tạo hóa đơn" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
+	<a href="" title="Xuất excel báo cáo" class="btn btn-success" id="saveAsExcelImport" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Xuất file Excel</span>
 	</a>
 </div>
@@ -86,7 +86,12 @@
 	</div>
 </div>
 
-	<table class="table table-hover">
+	<table id="list-import" class="table table-hover">
+		<tr>
+			<td colspan="7"><div class="hidden">
+				Báo cáo phiếu nhập kho hàng hóa
+			</div></td>
+		</tr>
 		<thead>
 			<tr>
 				<th>Số</th>
@@ -99,6 +104,7 @@
 			</tr>
 		</thead>
 		<tbody>
+
 			<?php
 			$sum_i = 0;
 			 ?>

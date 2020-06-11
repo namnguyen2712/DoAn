@@ -20,11 +20,11 @@
   <link rel="stylesheet" href="{{ url('/') }}/public/backend/css/datepicker3.css" />
   <script src="{{ url('/') }}/public/backend/js/angular.min.js"></script>
   <script src="{{ url('/') }}/public/backend/js/app.js"></script>
-
+  <script src="https://cdn.rawgit.com/SheetJS/js-xlsx/master/dist/xlsx.full.min.js"></script>
   <script src="{{ url('/') }}/public/backend/js/lumino.glyphs.js"></script>
   <script src="{{ url('/') }}/public/plugin/ckeditor/ckeditor.js"></script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 <!-- Chèn header layout -->
@@ -103,6 +103,7 @@
 <script src="{{ url('/') }}/public/backend/tinymce/config.js"></script>
 <script src="{{ url('/') }}/public/backend/js/function.js"></script>
 <script src="{{ url('/') }}/public/backend/js/ajax.js"></script>
+<script src="{{ url('/') }}/public/backend/js/excel.js"></script>
 <script src="{{ url('/') }}/public/backend/js/morris.js"></script>
 
 <script src="{{ url('/') }}/public/backend/js/chart.min.js"></script>

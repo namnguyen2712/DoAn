@@ -11,7 +11,7 @@
 		<tbody>
 			<tr>
 				<td>Tên nhà cung cấp <span style="color: red;">*</span></td>
-				<td>
+				<td colspan="3">
 					<input type="text" name="name" value="{{$model->name}}"  class="form-control" >
 				</td>
 			</tr>
@@ -54,8 +54,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Diễn giải<span style="color: red;">*</span></td>
-				<td>
+				<td>Ghi chú<span style="color: red;">*</span></td>
+				<td colspan="3">
 					<input type="text" name="explain" value="{{$model->explain}}" class="form-control" >
 				</td>
 			</tr>
@@ -101,7 +101,7 @@
 			</tr>
 			<tr>
 				<td>Địa chỉ<span style="color: red;">*</span></td>
-				<td>
+				<td colspan="3">
 					<input type="text" name="address" value="{{$model->address}}" class="form-control" >
 				</td>
 			</tr>

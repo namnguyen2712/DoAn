@@ -8,7 +8,7 @@
 	</a>
 </div>
 <div class="col-lg-9">
-	<a href="" title="Tạo hóa đơn" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
+	<a href="" title="Xuất báo cáo" id="saveAsExcelOrder" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Xuất file Excel</span>
 	</a>
 </div>
@@ -85,7 +85,12 @@
 	</div>
 </div>
 
-	<table class="table table-hover">
+	<table id="list-order" class="table table-hover">
+		<tr>
+			<td colspan="7"> <div class="hidden">
+				Báo cáo hóa đơn bán hàng hóa
+			</div> </td>
+		</tr>
 		<thead>
 			<tr>
 				<th>Số</th>
@@ -140,16 +145,7 @@
 			<td></td>
 		</tr>
 		</tbody>
-		<tfoot>
-		<tr>
-			<th>ID</th>
-  		  <th>Khách hàng</th>
-  		  <th>Thông tin đơn hàng</th>
-  		  <th>Tổng đơn hàng</th>
-  		  <th>Thời gian lập</th>
-  		  <th>Tác vụ</th>
-		</tr>
-		</tfoot>
+		
 	</table>
 
 @stop()

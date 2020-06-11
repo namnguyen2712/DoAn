@@ -7,6 +7,9 @@
 	<a href="{{route('backend.products-create')}}" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Thêm mới sản phẩm</span>
 	</a>
+	<a href="{{route('backend.products-report')}}" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
+		<i class="fa fa-plus"></i> <span>Báo cáo hàng tồn kho</span>
+	</a>
 	<div class="form-group">
 		<form action="{{route('backend.search-product')}}" method="GET">
 		  <input type="text" class="form-control" name="name"  placeholder="Nhập tên sản phẩm cần tìm kiếm">

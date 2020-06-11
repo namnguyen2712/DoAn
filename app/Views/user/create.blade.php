@@ -11,7 +11,7 @@
 			<tbody>
 				<tr>
 					<td>Tài khoản <span style="color: red;">*</span></td>
-					<td>
+					<td colspan="3">
 						<input type="text" class="form-control" name="username" value="{{ old('username')}}" placeholder="Nhập tên tài khoản"/>
 					</td>
 				</tr>

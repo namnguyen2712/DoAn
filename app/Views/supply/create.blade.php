@@ -12,7 +12,7 @@
 <tbody>
 <tr>
 	<td>Tên nhà cung cấp <span style="color: red;">*</span></td>
-	<td>
+	<td colspan="3">
 		<input type="text" class="form-control" name="name" value="{{ old('name')}}" placeholder="Nhập tên nhà cung cấp"/>
 	</td>
 </tr>
@@ -56,7 +56,7 @@
 </tr>
 <tr>
 	<td>Ghi chú<span style="color: red;">*</span></td>
-	<td>
+	<td colspan="3">
 		<input type="text" class="form-control" name="explain" placeholder="Nhập ghi chú"/>
 	</td>
 </tr>
@@ -105,7 +105,7 @@
 
 <tr>
 	<td>Địa chỉ<span style="color: red;">*</span></td>
-	<td>
+	<td colspan="3">
 		<input type="text" class="form-control" name="address" value="{{ old('address')}}" placeholder="Nhập địa chỉ"/>
 	</td>
 </tr>

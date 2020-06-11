@@ -14,7 +14,7 @@
 		<tbody>
 			<tr>
 				<td>Tên sản phẩm<span style="color: red;">*</span></td>
-				<td>
+				<td colspan="3">
 					<input type="text" class="form-control" name="name" value="{{$model->name}}" placeholder="">
 				</td>
 			</tr>
@@ -85,7 +85,7 @@
             </tr>
 			<tr>
 				<td>Tình trạng<span style="color: red;">*</span></td>
-				<td>
+				<td colspan="3">
 					<select name="status"  class="form-control" required>
 						<option value="1" <?php if (1 == $model->status) echo "selected";  ?> >
 							Bán hàng
@@ -139,20 +139,20 @@
 			</tr>
 			<tr>
 				<td>Công dụng<span style="color: red;">*</span></td>
-				<td>
-					<textarea name="uses"  rows="4" cols="80">{{$model->uses}}</textarea>
+				<td colspan="3">
+					<textarea name="uses"  rows="4" class="form-control">{{$model->uses}}</textarea>
 				</td>
 			</tr>
 			<tr>
 				<td>Cách sử dụng<span style="color: red;">*</span></td>
-				<td>
-					<input type="text" class="form-control" name="using" value="{{$model->using}}" placeholder="">
+				<td colspan="3">
+					<textarea name="using"  rows="4" class="form-control">{{$model->using}}</textarea>
 				</td>
 			</tr>
 			<tr>
 				<td>Chú ý<span style="color: red;">*</span></td>
-				<td>
-					<textarea name="attention"  rows="4" cols="80">{{$model->attention}}</textarea>
+				<td colspan="3">
+					<textarea name="attention"  rows="4" class="form-control">{{$model->attention}}</textarea>
 				</td>
 			</tr>
 

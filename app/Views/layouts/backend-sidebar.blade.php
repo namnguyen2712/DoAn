@@ -2,16 +2,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="" class="img-circle" alt="">
-            </div>
-            <div class="pull-left info">
-                <p>Cửa hàng thuốc tây</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-        <<?php
+        <?php
       $roleUser = DB::table('user')
       ->join('user_roles','user.id','=','user_roles.user_id')
       ->join('roles','user_roles.role_id','=','roles.id')
@@ -19,13 +10,23 @@
       ->select('*')
       ->first();
       ?>
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="" class="img-circle" alt="">
+            </div>
+            <div class="pull-left info">
+                <p>{{ $roleUser->name}}</p>
+            </div>
+        </div>
+
+
 
 
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">THANH CÔNG CỤ</li>
-            <li class="header">{{ $roleUser->name}}</li>
+
             <!-- /.thống kê -->
 
             <li class="<?php if($roleUser->id!=1) echo "hidden"; ?>">
