@@ -7,7 +7,8 @@ use App\Models\role;
 use App\Models\usersroles;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Hash;
+use Auth;
 class userController extends Controller
 {
     /**
@@ -143,7 +144,6 @@ class userController extends Controller
             'username.required'=> 'Chưa nhập tài khoản',
             'username.min'=> 'Tài khoản từ 3 đến 30 kí tự',
             'username.max'=> 'Tài khoản từ 3 đến 30 kí tự',
-            'password.required'=> 'Chưa nhập mật khẩu',
             'full_name.required'=> 'Bạn chưa nhập họ tên',
             'full_name.min'=> 'Họ tên từ 3 đến 50 kí tự',
             'full_name.max'=> 'Họ tên từ 3 đến 50 kí tự',
@@ -191,6 +191,52 @@ class userController extends Controller
             ]);
         }
 
+    }
+    public function edit_password($id){
+        return view('user.change-password',[
+            'model'=>user::find($id),
+        ]);
+    }
+
+    public function updatePassword(Request $request, $id) {
+
+         $model = user::find($id);
+         $this->validate($request,[
+             'oldPassword'=>'required',
+             'newPassword'=> 'required|min:3|max:30',
+             'password_rp' => 'same:newPassword',
+
+        ],
+        [
+            'oldPassword.required'=> 'Chưa nhập mật khẩu cũ',
+            'newPassword.required'=> 'Chưa nhập mật khẩu mới',
+            'newPassword.min'=> 'Mật khẩu từ 6 đến 30 kí tự',
+            'newPassword.max'=> 'Mật khẩu từ 6 đến 30 kí tự',
+            'password_rp.same'=> 'Mật khẩu xác nhận phải trùng khớp',
+
+        ]);
+
+        if(Hash::check($request->oldPassword, Auth::user()->password)) {
+
+           if($request->newPassword == $request->password_rp) {
+               $user = User::find(Auth::user()->id);
+               $user->password = bcrypt($request->newPassword);
+               $user->save();
+               Auth::logout();
+               return redirect()->route('login')->with('success','Đổi mật khẩu thành công, Vui lòng đăng nhập lại!');
+           }
+
+           else {
+
+               return redirect()->back()->with('error','Mật khẩu xác nhận phải trùng khớp');
+           }
+
+       }
+
+       else {
+
+           return redirect()->back()->with('error','Mật khẩu cũ không chính xác');
+       }
     }
 
 }

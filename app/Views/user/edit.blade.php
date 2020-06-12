@@ -55,7 +55,7 @@
 								{!!$errors->first('email')!!}
 							</div>
 						@endif
-					</td>
+					</td> 
 				</tr>
 				<tr>
 					<td>Địa chỉ <span style="color: red;">*</span></td>

@@ -150,17 +150,7 @@
 		  		<td></td>
 			</tr>
 		</tbody>
-		<tfoot>
-		<tr>
-			<th>Số</th>
-  		  <th>Nhà cung cấp</th>
-  		  <th>Nhân viên lập</th>
-  		  <th>Thông tin đơn hàng</th>
-  		  <th>Tổng đơn hàng</th>
-  		  <th>Thời gian lập</th>
-  		  <th>Tác vụ</th>
-		</tr>
-		</tfoot>
+		
 	</table>
 	<div class="text-center">
 		{{ $import->links() }}

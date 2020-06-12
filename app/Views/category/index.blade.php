@@ -17,13 +17,7 @@
 					<tbody id="tbody-category">
 
 					</tbody>
-					<tfoot>
-	                <tr>
-	                  <th>Mã danh mục</th>
-	                  <th>Tên danh mục</th>
-					  <th>Hành động</th>
-	                </tr>
-	                </tfoot>
+					
 				</table>
 
 

@@ -25,7 +25,7 @@ class orderController extends Controller
     public function index(Cart $cart)
     {
         $cart->clear();
-        $order = order::orderBy('created_at','DESC')->get();
+        $order = order::orderBy('created_at','DESC')->paginate(15);
         return view('order.index',[
             'order' => $order
         ]);
@@ -73,7 +73,8 @@ class orderController extends Controller
             $order = order::create([
                 'sum'=>$request->sum,
                 'cus_id'=>$request->s_id,
-                'employee_id'=>$request->employee_id
+                'employee_id'=>$request->employee_id,
+                'type'=>$request->type
 
             ]);
             foreach($cart->items as $item){

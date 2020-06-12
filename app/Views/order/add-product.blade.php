@@ -51,7 +51,7 @@
 			</td>
 			<td>{{$pro->quantity}}</td>
 			<td>
-				@if($pro->status != '0')
+				@if($pro->status != '0' && $pro->quantity != '0')
 					<a href="{{ route('backend.add-order',['id'=>$pro->id,'s_id'=>$s->id]) }}" class="add-order-quick" title="Thêm vào giỏ hàng" id="click_cart" data-id='{{ $pro->id }}'><i class="glyphicon glyphicon-plus" style="color: green;"></i></a>
 				@else
 					<span class="glyphicon glyphicon-plus" style="color: #888;" title="Sản phẩm này đã ngừng kinh doanh"></span>

@@ -34,16 +34,7 @@
 		</tr>
 		@endforeach()
 	</tbody>
-	<tfoot>
-	<tr>
-		<th>ID</th>
-  	  <th>Họ tên</th>
-  	  <th>Email</th>
-  	  <th>Địa chỉ</th>
-  	  <th>Số điện thoại</th>
-  	  <th>Tác vụ</th>
-	</tr>
-	</tfoot>
+	
 </table>
 
 <div class="text-center">

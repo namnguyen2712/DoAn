@@ -38,4 +38,12 @@ Route::get('/search-user',[
 	'uses' => 'userController@search_user',
 	'as' => 'backend.search-user'
 ]);
+Route::get('user-change-password/{id}',[
+	'uses'=>'userController@edit_password',
+	'as'=>'backend.user-change-password'
+]);
+Route::post('user-change-password/{id}',[
+	'uses'=>'userController@updatePassword',
+	'as'=>'backend.user-change-password'
+]);
  ?>

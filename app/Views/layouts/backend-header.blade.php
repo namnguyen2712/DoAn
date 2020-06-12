@@ -26,7 +26,9 @@
               @if(Auth::check())
               <a href="#" class="dropdown-toggle user-login" data-toggle="dropdown">Xin chào   {{ Auth::user()->full_name }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
+
                 <li><a href="{{route('backend.logout')}}"><span class="glyphicon glyphicon-off"></span> Đăng xuất</a></li>
+                <li><a href="{{route('backend.user-change-password',['id'=> Auth::user()->id])}}"><span class="fa fa-pencil"></span>Đổi mật khẩu </a></li>
               </ul>
             </li>
             @else

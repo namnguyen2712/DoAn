@@ -27,14 +27,7 @@
                     			</tr>
                     	@endforeach()
 					</tbody>
-					<tfoot>
-	                <tr>
-						<th>Mã chức năng</th>
-  					  <th>Đường dẫn</th>
-  					  <th>Hành động</th>
-  					  <th>Tác vụ</th>
-	                </tr>
-	                </tfoot>
+					
 				</table>
 
 

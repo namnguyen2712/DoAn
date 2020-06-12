@@ -49,7 +49,9 @@
 		  <div class="col-sm-4 invoice-col">
 			<b>Mã hóa đơn: #</b><br>
 			<b>Ngày:</b>  <?php echo date("d/m/Y"); ?><br>
-			<b>Mã khách hàng:</b> {{$customer->id}}
+			<b>Mã khách hàng:</b> {{$customer->id}} <br>
+			<input type="checkbox"  name="type" value="1">
+    		<label for="">Bán theo đơn thuốc</label>
 		  </div>
 		  <!-- /.col -->
 		</div>

@@ -8,5 +8,5 @@ class order extends Model
 {
     protected $table ='order';
  	protected $fillable=[
- 		'sum','cus_id','type','employee_id'
+ 		'sum','cus_id','type','employee_id',
  	];}

@@ -37,16 +37,7 @@
 			</tr>
 			@endforeach()
 		</tbody>
-		<tfoot>
-		<tr>
-			<th>Tên nhà cung cấp</th>
-			<th>Số điện thoại</th>
-			<th>Địa chỉ</th>
-			<th>Email</th>
-			<th>Ghi chú</th>
-			<th>Tác vụ</th>
-		</tr>
-		</tfoot>
+		
 	</table>
 	<div class="text-center">
 		{{ $supplys->links() }}

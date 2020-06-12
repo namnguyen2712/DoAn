@@ -73,18 +73,7 @@
 		@endforeach()
 
 	</tbody>
-	<tfoot>
-	<tr>
-		<th>Tên sản phẩm</th>
-		<th>Loại sản phẩm</th>
-		<th>Đơn vị</th>
-		<th>Giá</th>
-		<th>Xuất xứ</th>
-		<th>Ảnh</th>
-		<th>SL hàng trong kho</th>
-		<th>Tác vụ</th>
-	</tr>
-	</tfoot>
+	
 </table>
 <div class="text-center">
 	{{ $products->links() }}

@@ -96,6 +96,7 @@
 				<th>Số</th>
 				<th>Khách hàng</th>
 				<th>Thông tin đơn hàng</th>
+				<th>Hình thức</th>
 				<th>Tổng đơn hàng</th>
 				<th>Nhân viên lập</th>
 				<th>Thời gian lập</th>
@@ -124,7 +125,16 @@
 						 {{$pro->name}} - SL: {{$id->quantity}}<br>
 					@endforeach
 				</td>
+				<td>
+					<?php if($i->type ==1){
+						echo "Bán thuốc theo đơn";
+					}
+					else {
+						echo "Thuốc bán lẻ";
+					} ?>
+				</td>
 				<td>{{ number_format($i->sum)}}</td>
+
 				<td>{{$employee->username}}</td>
 				<td>
 					{{date('d/m/Y ', strtotime($i->created_at))}}
@@ -139,13 +149,15 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td>Tổng:{{ number_format($sum_i)}}</td>
 			<td></td>
+			<td>Tổng:{{ number_format($sum_i)}}</td>
 			<td></td>
 			<td></td>
 		</tr>
 		</tbody>
-		
-	</table>
 
+	</table>
+	<div class="text-center">
+		{{ $order->links() }}
+	</div>
 @stop()
