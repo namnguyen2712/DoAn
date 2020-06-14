@@ -216,10 +216,10 @@ class userController extends Controller
 
         ]);
 
-        if(Hash::check($request->oldPassword, Auth::user()->password)) {
+        if(Hash::check($request->oldPassword, Auth::guard('admin')->user()->password)) {
 
            if($request->newPassword == $request->password_rp) {
-               $user = User::find(Auth::user()->id);
+               $user = User::find(Auth::guard('admin')->user()->id);
                $user->password = bcrypt($request->newPassword);
                $user->save();
                Auth::logout();

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use DB;
 use Closure;
 use App\Models\permission;
-class checkACL
+class CheckPer
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class checkACL
         $listRoleOfUser = DB::table('user')
         ->join('user_roles', 'user.id', '=', 'user_roles.user_id')
         ->join('roles', 'user_roles.role_id', '=', 'roles.id')
-        ->where('user.id',Auth()->user()->id)
+        ->where('user.id',Auth()->guard('admin')->user()->id)
         ->select('roles.*')
         ->get()->pluck('id')->toArray(); // có thể trả về nhiều id role vì 1 user có thể có nhiều quyền
          // dd($listRoleOfUser);

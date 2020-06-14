@@ -43,20 +43,33 @@ Route::get('/namedesc',[
 	'as'=>'nameasc'
 ]);
 Route::get('login',[
-	'uses'=>'Backend\AuthController@login',
+	'uses'=>'FrontendController@login',
 	'as'=>'login'
 ]);
 Route::post('login',[
-	'uses'=>'Backend\AuthController@postLogin',
+	'uses'=>'FrontendController@postLogin',
 	'as'=>'login'
 ]);
 Route::get('logout',[
-	'uses'=>'Backend\AuthController@logout',
+	'uses'=>'FrontendController@logout',
 	'as'=>'logout'
 ]);
 Route::get('detail/{id}',[
 	'uses'=>'FrontendController@detailpro',
 	'as'=>'detail'
+]);
+
+Route::get('/order',[
+	'uses'=>'FrontendController@history_order',
+	'as'=>'order'
+]);
+Route::get('change-password/{id}',[
+	'uses'=>'FrontendController@edit_password',
+	'as'=>'change-password'
+]);
+Route::post('change-password/{id}',[
+	'uses'=>'FrontendController@updatePassword',
+	'as'=>'change-password'
 ]);
 
 

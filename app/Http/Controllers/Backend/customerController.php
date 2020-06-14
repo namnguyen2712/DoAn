@@ -66,6 +66,7 @@ class customerController extends Controller
             'address'=>$request->address,
             'phone'=>$request->phone,
             'sex'=>$request->sex,
+            'password'=>bcrypt($request->phone),
 
         ])){
             return redirect()->route('backend.customer')->with('success','Thêm mới khách hàng thành công');

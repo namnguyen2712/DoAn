@@ -70,7 +70,7 @@
 				</td>
 				<td>Xuất sứ<span style="color: red;">*</span></td>
 				<td>
-					<select name="nation_id"  class="form-control" value="{{ old('nation_id')}}" required>
+					<select name="nation_id"  class="form-control selectpicker" data-show-subtext="true" data-live-search="true" value="{{ old('nation_id')}}" required>
 						<option value="">Chọn quốc gia</option>
 						@foreach($nations as $nation)
 						<option value="{{$nation->id}}" >

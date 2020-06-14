@@ -56,12 +56,33 @@
 					  @endforeach
                   </ul>
                 </li>
-
-
+				<li class="has-children">
+					@if(Auth::check() )
+					<a>Xin chào  {{ Auth::user()->name }} </a>
+					<ul class="dropdown">
+						<li style="border: none;">
+							<a href="{{route('logout')}}"><span class="glyphicon glyphicon-off"></span> Đăng xuất</a>
+						</li>
+						<li style="border: none;">
+							<a href="{{route('change-password',['id'=>Auth::user()->id])}}"><span class="glyphicon glyphicon-off"></span> Đổi mật khẩu</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<?php $order=DB::table('order')->where('cus_id',Auth::user()->id)->count('*') ?>
+	  			  <a href="{{route('order')}}" class="icons-btn d-inline-block bag">
+	  				  <span class="icon-shopping-bag"></span>
+	  				  <span class="number">{{$order}}</span>
+	  			  </a>
+				</li>
+				@else
+				<li><a href="{{route('login')}}">Đăng nhập</a></li>
+				@endif
               </ul>
             </nav>
           </div>
           <div class="icons">
+
             <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
                 class="icon-menu"></span></a>

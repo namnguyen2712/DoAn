@@ -6,7 +6,7 @@
       $roleUser = DB::table('user')
       ->join('user_roles','user.id','=','user_roles.user_id')
       ->join('roles','user_roles.role_id','=','roles.id')
-      ->where('user.id','=',Auth()->user()->id)
+      ->where('user.id','=',Auth()->guard('admin')->user()->id)
       ->select('*')
       ->first();
       ?>
@@ -39,12 +39,14 @@
 
             <!-- NCC -->
 
-
-            <li class="<?php if($roleUser->id!=1 && $roleUser->id!=4) echo "hidden"; ?>">
+    @if(!($roleUser->id!=1 && $roleUser->id!=4))
+            <li>
                 <a href="{{route('backend.supply')}}">
                     <i class="glyphicon glyphicon-save"></i> <span>Quản lý nhà cung cấp</span>
                 </a>
             </li>
+
+    @endif
 
             <!-- /.Categorys -->
 

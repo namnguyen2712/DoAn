@@ -258,7 +258,7 @@ class orderController extends Controller
     }
     public function get_order_month(Request $request){
          $month = $request->month;
-         $order= order::whereMonth('created_at',$month)->paginate(10);
+         $order= order::whereMonth('created_at',$month)->paginate(40);
          return view('order.index',[
              'order'=>$order
          ]);

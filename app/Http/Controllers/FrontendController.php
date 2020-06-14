@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 
 use View;
- use Auth;
- use DB;
+use Auth;
+use DB;
 // use App\Models\Order;
 // use App\Models\Order_detail;
 use App\Models\Category;
@@ -11,6 +11,9 @@ use App\Models\Products;
  use App\Helper\Cart;
  use Illuminate\Http\Request;
  use App\Models\User;
+ use App\Models\Customer;
+ use App\Models\Order;
+ use Illuminate\Support\Facades\Hash;
 // use App\Models\contact;
 // use App\Models\banner;
 
@@ -63,14 +66,14 @@ class FrontendController extends Controller
 }
 public function postLogin(Request $request)
 {
-    if(Auth::attempt($request->only('username','password'),$request->has('remember'))) {
 
-        return redirect()->route('home')->with('success','Chào mừng trở lại');
-
-    }
-    else{
-        return redirect()->back()->with('error','Sai tên đăng nhập hoặc mật khẩu');
-    }
+    $credentials = array('phone'=>$request->phone, 'password'=>$request->password);
+       if(Auth::attempt($credentials)){
+            return redirect()->route('home')->with('success','Đăng nhập thành công!');
+       }
+       else{
+        return redirect()->route('login')->with('error','Đăng nhập thất bại!');
+       }
 
 
 
@@ -121,6 +124,57 @@ public function namedesc(){
     return view('frontend.product',[
         'products'=>$pro
     ]);
+}
+public function history_order(){
+    $order = Order::where('cus_id',Auth::user()->id)->orderBy('created_at','DESC')->get();
+    return view('frontend.history-order',[
+       'order' =>$order
+   ]);
+}
+public function edit_password($id){
+    return view('frontend.change-password',[
+        'model'=>Customer::find($id),
+    ]);
+}
+public function updatePassword(Request $request, $id) {
+
+     $model = Customer::find($id);
+     $this->validate($request,[
+         'oldPassword'=>'required',
+         'newPassword'=> 'required|min:3|max:30',
+         'password_rp' => 'same:newPassword',
+
+    ],
+    [
+        'oldPassword.required'=> 'Chưa nhập mật khẩu cũ',
+        'newPassword.required'=> 'Chưa nhập mật khẩu mới',
+        'newPassword.min'=> 'Mật khẩu từ 6 đến 30 kí tự',
+        'newPassword.max'=> 'Mật khẩu từ 6 đến 30 kí tự',
+        'password_rp.same'=> 'Mật khẩu xác nhận phải trùng khớp',
+
+    ]);
+
+    if(Hash::check($request->oldPassword, Auth::user()->password)) {
+
+       if($request->newPassword == $request->password_rp) {
+           $user = Customer::find(Auth::user()->id);
+           $user->password = bcrypt($request->newPassword);
+           $user->save();
+           Auth::logout();
+           return redirect()->route('login')->with('success','Đổi mật khẩu thành công, Vui lòng đăng nhập lại!');
+       }
+
+       else {
+
+           return redirect()->back()->with('error','Mật khẩu xác nhận phải trùng khớp');
+       }
+
+   }
+
+   else {
+
+       return redirect()->back()->with('error','Mật khẩu cũ không chính xác');
+   }
 }
 }
 

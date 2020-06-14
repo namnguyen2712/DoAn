@@ -23,45 +23,16 @@
 
 	<div class=" col-lg-5 row">
 		<form action="{{route('backend.order-get-month')}}" method="GET">
-			<select class="form-control" name="month" required>
+			<select name="month"  class="form-control" required>
 				<option value="">Chọn tháng</option>
-				<option value="1" >
-					Tháng 1
-				</option>
-				<option value="2" >
-					Tháng 2
-				</option>
-				<option value="3" >
-					Tháng 3
-				</option>
-				<option value="4" >
-					Tháng 4
-				</option>
-				<option value="5" >
-					Tháng 5
-				</option>
-				<option value="6" >
-					Tháng 6
-				</option>
-				<option value="7" >
-					Tháng 7
-				</option>
-				<option value="8" >
-					Tháng 8
-				</option>
-				<option value="9" >
-					Tháng 9
-				</option>
-				<option value="10" >
-					Tháng 10
-				</option>
-				<option value="11" >
-					Tháng 11
-				</option>
-				<option value="12" >
-					Tháng 12
-				</option>
-			</select>
+
+				<?php
+				    for($i = 1; $i < 13; $i++) {
+				        echo "<option value='$i'>Tháng $i</option>";
+				    }
+				?>
+
+		    </select>
 	</div>
 	<div class="col-lg-1 ">
 		<button type="submit" class="btn btn-success" name="button">Nạp</button>

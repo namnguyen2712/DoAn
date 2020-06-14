@@ -13,7 +13,7 @@
 //group chứa nhiều file có tiền tố backend
 ////'namespace'=>'Backend' thay thế đường dẫn trong 'uses' => 'HomeController@index', ở home.php
 ///
-Route::group(['prefix' => 'backend','middleware' => 'auth', 'namespace'=>'Backend'],function(){
+Route::group(['prefix' => 'backend','middleware' => 'admin', 'namespace'=>'Backend'],function(){
 	require_once 'backend/home.php';
 	require_once 'backend/category.php';
 	require_once 'backend/supply.php';
@@ -28,8 +28,6 @@ Route::group(['prefix' => 'backend','middleware' => 'auth', 'namespace'=>'Backen
 	require_once 'backend/role.php';
 	require_once 'backend/permission.php';
 	require_once 'backend/role_permission.php';
-
-
 });
 
 require_once 'auth.php';

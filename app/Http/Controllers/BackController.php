@@ -12,9 +12,10 @@ class BackController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(function($request, $next){
-        	if (Auth::user()->groups != 3){
-        		return redirect()->back()->with('error','Sai tên đăng nhập hoặc mật khẩu');
+        
+        $this->middleware(function($request, $next, $guard = 'admin' ){
+        	if (Auth::guard($guard)->check()){
+        		return redirect()->route('backend');
         	}else{
         		return $next($request);
         	}

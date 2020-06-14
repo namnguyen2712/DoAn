@@ -97,7 +97,7 @@
 			<div class="col-md-6">
 				<div class="text-center">
 					<h4 style="margin: 30px 0px 110px 0px">Nhân viên bán hàng</h4>
-					<h4>{{ Auth::user()->full_name }}</h4>
+					<h4>{{ Auth::guard('admin')->user()->full_name }}</h4>
 				</div>
 			</div>
 			<input type="hidden" name="employee_id" value="{{Auth::user()->id}}"/>

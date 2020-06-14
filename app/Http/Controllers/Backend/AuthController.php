@@ -14,7 +14,7 @@ class AuthController extends Controller{
 
 	public function postLogin(Request $request){
 		// dd(Auth::attempt($request->only('username','password')));
-		if(Auth::attempt($request->only('username','password'),$request->has('remember'))){
+		if(Auth::guard('admin')->attempt($request->only('username','password'),$request->has('remember'))){
 
 			return redirect()->route('backend.user-info',[$request->username])->with('success','Chào mừng trở lại');
 		}
@@ -24,7 +24,7 @@ class AuthController extends Controller{
 	}
 
 	public function logout(){
-		Auth::logout();
+		Auth::guard('admin')->logout();
 		return redirect()->route('backend.login');
 	}
 
