@@ -73,4 +73,8 @@ Route::post('change-password/{id}',[
 ]);
 
 
+Route::get('/order-detail/{id}',[
+	'uses'=>'FrontendController@order_detail',
+	'as'=>'order-detail'
+]);
 ?>

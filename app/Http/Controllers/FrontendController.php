@@ -5,7 +5,7 @@ use View;
 use Auth;
 use DB;
 // use App\Models\Order;
-// use App\Models\Order_detail;
+use App\Models\Order_detail;
 use App\Models\Category;
 use App\Models\Products;
  use App\Helper\Cart;
@@ -13,6 +13,7 @@ use App\Models\Products;
  use App\Models\User;
  use App\Models\Customer;
  use App\Models\Order;
+
  use Illuminate\Support\Facades\Hash;
 // use App\Models\contact;
 // use App\Models\banner;
@@ -136,6 +137,14 @@ public function edit_password($id){
         'model'=>Customer::find($id),
     ]);
 }
+public function order_detail($id){
+    $order= Order::find($id);
+    $orderDetails=Order::join('order_detail','order.id','=','order_detail.order_id')->where('order.id',$id)->select()->get();
+    return view('frontend.order-detail',[
+        'order'=>$order,
+        'orderDetails'=>$orderDetails,
+    ]);
+}
 public function updatePassword(Request $request, $id) {
 
      $model = Customer::find($id);
@@ -176,6 +185,7 @@ public function updatePassword(Request $request, $id) {
        return redirect()->back()->with('error','Mật khẩu cũ không chính xác');
    }
 }
+
 }
 
 

@@ -28,34 +28,36 @@
             <li class="header">THANH CÔNG CỤ</li>
 
             <!-- /.thống kê -->
-
-            <li class="<?php if($roleUser->id!=1) echo "hidden"; ?>">
+            @if($roleUser->id==1)
+            <li>
                 <a href="{{route('backend.home')}}">
                     <i class="fa fa-home"></i> <span>Trang chủ</span>
                 </a>
             </li>
+            @endif
 
             <!-- NSX -->
 
             <!-- NCC -->
 
-    @if(!($roleUser->id!=1 && $roleUser->id!=4))
-            <li>
-                <a href="{{route('backend.supply')}}">
-                    <i class="glyphicon glyphicon-save"></i> <span>Quản lý nhà cung cấp</span>
-                </a>
-            </li>
+            @if(($roleUser->id==1 || $roleUser->id==4))
+                    <li>
+                        <a href="{{route('backend.supply')}}">
+                            <i class="glyphicon glyphicon-save"></i> <span>Quản lý nhà cung cấp</span>
+                        </a>
+                    </li>
 
-    @endif
+            @endif
 
             <!-- /.Categorys -->
 
-
-            <li class="<?php if($roleUser->id!=1 && $roleUser->id!=4) echo "hidden"; ?>">
+            @if(($roleUser->id==1 || $roleUser->id==4))
+            <li>
                 <a href="{{ route('backend.category') }}">
                     <i class="glyphicon glyphicon-th-list"></i> <span>Quản lý danh mục</span>
                 </a>
             </li>
+            @endif
 
             <!-- / .Unit-->
 
@@ -63,6 +65,7 @@
             <!-- /.Products -->
 
 
+            @if(($roleUser->id==1 || $roleUser->id==4 || $roleUser->id==3))
 
           <li class="treeview">
           <a href="#">
@@ -78,31 +81,36 @@
             <li ><a href="{{route('backend.nation')}}"><i class="fa fa-flag"></i> Xuất xứ</a></li>
           </ul>
         </li>
+        @endif
 
             <!-- Nhap hang -->
 
+            @if(($roleUser->id==1 || $roleUser->id==4))
 
-            <li <?php if($roleUser->id!=1 && $roleUser->id!=4) echo "hidden"; ?>>
+            <li>
                 <a href="{{route('backend.import')}}">
                     <i class="fa fa-cart-arrow-down"></i> <span>Quản lý nhập hàng</span>
                 </a>
             </li>
+            @endif
 
             <!-- /.Orders -->
 
+            @if(($roleUser->id==1 || $roleUser->id==3))
 
-            <li class="<?php if($roleUser->id!=1 && $roleUser->id!=3) echo "hidden"; ?>" >
+            <li>
                 <a href="{{route('backend.order')}}">
                     <i class="glyphicon glyphicon-shopping-cart"></i> <span>Quản lý bán hàng</span>
                 </a>
             </li>
+            @endif
 
             <!-- / .User backend-->
 
 
 
-
-            <li class="treeview <?php if($roleUser->id!=1 && $roleUser->id!=3) echo "hidden"; ?>">
+            @if(($roleUser->id==1 || $roleUser->id==3))
+            <li class="treeview">
             <a href="#">
               <i class="fa fa-user"></i>
               <span>Quản lý tài khoản</span>
@@ -111,11 +119,16 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="<?php if($roleUser->id!=1) echo "hidden"; ?>"><a href="{{route('backend.user')}}"><i class="fa fa-user-md"></i> Nhân viên</a></li>
-              <li  class="<?php if($roleUser->id!=1 && $roleUser->id!=3) echo "hidden"; ?>" ><a href="{{route('backend.customer')}}"><i class="fa fa-user-plus"></i> Khách hàng</a></li>
+                @if(($roleUser->id==1))
+              <li><a href="{{route('backend.user')}}"><i class="fa fa-user-md"></i> Nhân viên</a></li>
+              @endif
+              @if(($roleUser->id==1 || $roleUser->id==3))
+              <li ><a href="{{route('backend.customer')}}"><i class="fa fa-user-plus"></i> Khách hàng</a></li>
+              @endif
 
             </ul>
           </li>
+          @endif
 
           <li class="treeview <?php if($roleUser->id!=1) echo "hidden"; ?>">
           <a href="#">

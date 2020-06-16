@@ -10,7 +10,7 @@
 </div>
 <div class="col-lg-9">
 	<a href="" title="Xuất excel báo cáo" class="btn btn-success" id="saveAsExcelImport" style="margin: 10px 0px 15px 0px ">
-		<i class="fa fa-plus"></i> <span>Xuất file Excel</span>
+		<i class="fa fa-file-excel-o"></i> <span>Xuất file Excel</span>
 	</a>
 </div>
 <div class=" col-lg-5 row">

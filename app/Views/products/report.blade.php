@@ -2,7 +2,7 @@
 @section('title','THỐNG KÊ HÀNG CÒN TRONG KHO')
 @section('box-body')
 <a href="" title="Xuất excel báo cáo" class="btn btn-success" id="saveAsExcelProduct" style="margin: 10px 0px 15px 0px ">
-	<i class="fa fa-plus"></i> <span>Xuất file Excel</span>
+	<i class="fa fa-file-excel-o"></i> <span>Xuất file Excel</span>
 </a>
 <table id="list-product" class="table table-hover">
 	<tr>
