@@ -11,7 +11,7 @@ use App\Models\Import_detail;
 use App\Helper\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use DB;
 class ImportController extends Controller
 {
     /**
@@ -251,8 +251,10 @@ class ImportController extends Controller
     public function search_supply_import(Request $request){
         $name_supply = $request->name_supply;
         if($name_supply != ''){
-            $supply=supply::where('name','like','%'.$name_supply.'%')->select('id')->first()->toArray();
-            $import=import::where('id_supply',$supply)->paginate(10);
+            $import=DB::table('import')->join('supply','supply.id','=','import.id_supply')
+            ->where('supply.name','like','%'.$name_supply.'%')
+            ->select('import.*')
+            ->paginate(500);
             return view('import.index',[
                 'import'=>$import
             ]);
@@ -261,8 +263,10 @@ class ImportController extends Controller
     public function search_employee_import(Request $request){
         $name_employee = $request->name_employee;
         if($name_employee != ''){
-            $employee=user::where('username','like','%'.$name_employee.'%')->select('id')->first()->toArray();
-            $import=import::where('id_employee',$employee)->paginate(10);
+            $import=DB::table('import')->join('user','user.id','=','import.id_employee')
+            ->where('user.username','like','%'.$name_employee.'%')
+            ->select('import.*')
+            ->paginate(500);
             return view('import.index',[
                 'import'=>$import
             ]);

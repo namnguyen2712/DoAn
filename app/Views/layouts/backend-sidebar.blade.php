@@ -97,12 +97,30 @@
             <!-- /.Orders -->
 
             @if(($roleUser->id==1 || $roleUser->id==3))
+            <li class="treeview">
+            <a href="#">
+              <i class="glyphicon glyphicon-shopping-cart"></i>
+              <span>Quản lý bán hàng</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{route('backend.order')}}">
+                        <i class="glyphicon glyphicon-shopping-cart"></i> <span>Quản lý bán hàng</span>
+                    </a>
+                </li>
 
-            <li>
-                <a href="{{route('backend.order')}}">
-                    <i class="glyphicon glyphicon-shopping-cart"></i> <span>Quản lý bán hàng</span>
-                </a>
+
+                <li>
+                    <a href="{{route('backend.order-report')}}">
+                        <i class="fa fa-flag-o"></i> <span>Báo cáo doanh thu</span>
+                    </a>
+                </li>
+            </ul>
             </li>
+
             @endif
 
             <!-- / .User backend-->
@@ -129,8 +147,8 @@
             </ul>
           </li>
           @endif
-
-          <li class="treeview <?php if($roleUser->id!=1) echo "hidden"; ?>">
+          @if(($roleUser->id==1))
+          <li class="treeview">
           <a href="#">
             <i class="fa fa-code-fork"></i>
             <span>Phân quyền</span>
@@ -145,6 +163,7 @@
 
           </ul>
           </li>
+          @endif
 
         </ul>
     </section>

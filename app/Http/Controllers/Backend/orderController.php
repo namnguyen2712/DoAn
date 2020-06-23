@@ -13,7 +13,7 @@ use App\Models\order_detail;
 use App\Helper\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use DB;
 class orderController extends Controller
 {
     /**
@@ -251,14 +251,14 @@ class orderController extends Controller
     }
     public function get_order_date(Request $request){
          $date = $request->date;
-         $orrder= order::whereDate('created_at',$date)->paginate(10);
+         $orrder= order::whereDate('created_at',$date)->paginate(100);
          return view('order.index',[
              'order'=>$orrder
          ]);
     }
     public function get_order_month(Request $request){
          $month = $request->month;
-         $order= order::whereMonth('created_at',$month)->paginate(40);
+         $order= order::whereMonth('created_at',$month)->paginate(500);
          return view('order.index',[
              'order'=>$order
          ]);
@@ -266,8 +266,8 @@ class orderController extends Controller
     public function search_customer_order(Request $request){
         $phone_customer = $request->phone_customer;
         if($phone_customer != ''){
-            $customer=customer::where('phone','like','%'.$phone_customer.'%')->select('id')->first()->toArray();
-            $order=order::where('cus_id',$customer)->paginate(10);
+
+            $order= DB::table('order')->join('customer','customer.id','=','order.cus_id')->where('customer.phone','like','%'.$phone_customer.'%')->select('order.*')->paginate(500);
             return view('order.index',[
                 'order'=>$order
             ]);
@@ -276,8 +276,8 @@ class orderController extends Controller
     public function search_employee_order(Request $request){
         $name_employee = $request->name_employee;
         if($name_employee != ''){
-            $employee=user::where('username','like','%'.$name_employee.'%')->select('id')->first()->toArray();
-            $order=order::where('employee_id',$employee)->paginate(10);
+        $order= DB::table('order')->join('user','order.employee_id','=','user.id')->where('username','like','%'.$name_employee.'%')->select('order.*')->paginate(500);
+
             return view('order.index',[
                 'order'=>$order
             ]);
@@ -292,6 +292,27 @@ class orderController extends Controller
                 'order'=>$order
             ]);
         }
+    }
+    public function report()
+    {
+        $order = order::orderBy('created_at','DESC')->where('employee_id',Auth()->guard('admin')->user()->id)->paginate(15);
+        return view('report.report-sale',[
+            'order' => $order
+        ]);
+    }
+    public function get_sale_order_date(Request $request){
+         $date = $request->date;
+         $orrder= order::whereDate('created_at',$date)->where('employee_id',Auth()->guard('admin')->user()->id)->paginate(100);
+         return view('report.report-sale',[
+             'order'=>$orrder
+         ]);
+    }
+    public function get_sale_order_month(Request $request){
+         $month = $request->month;
+         $order= order::whereMonth('created_at',$month)->where('employee_id',Auth()->guard('admin')->user()->id)->paginate(500);
+         return view('report.report-sale',[
+             'order'=>$order
+         ]);
     }
 
 }

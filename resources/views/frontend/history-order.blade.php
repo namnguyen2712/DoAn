@@ -30,7 +30,9 @@
         					<?php
         						$pro = DB::table('products')->where('id',$id->pro_id)->first();
         					?>
-        					{{$pro->name}} - SL: {{$id->quantity}}<br>
+
+                            <a href="{{route('detail',['id'=>$pro->id])}}" class="text-black">{{$pro->name}}- SL: {{$id->quantity}}<br></a>
+
     				    @endforeach
                     </td>
                     <td>{{number_format($o->sum)}} VNĐ</td>

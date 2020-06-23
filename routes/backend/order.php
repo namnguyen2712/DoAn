@@ -89,3 +89,15 @@ Route::get('/order-get-month',[
 	'uses'=> 'orderController@get_order_month',
 	'as' => 'backend.order-get-month'
 ]);
+Route::get('order-report',[
+	'uses' => 'orderController@report',
+	'as' => 'backend.order-report'
+]);
+Route::get('/sale-order-get-date',[
+	'uses'=> 'orderController@get_sale_order_date',
+	'as' => 'backend.sale-order-get-date'
+]);
+Route::get('/sale-order-get-month',[
+	'uses'=> 'orderController@get_sale_order_month',
+	'as' => 'backend.sale-order-get-month'
+]);
