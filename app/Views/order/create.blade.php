@@ -100,7 +100,7 @@
 					<h4>{{ Auth::guard('admin')->user()->full_name }}</h4>
 				</div>
 			</div>
-			<input type="hidden" name="employee_id" value="{{Auth::user()->id}}"/>
+			<input type="hidden" name="employee_id" value="{{Auth::guard('admin')->user()->id}}"/>
 			<div class="col-md-6">
 				<div class="text-center">
 					<h4 style="margin: 30px 0px 110px 0px">Khách hàng</h4>

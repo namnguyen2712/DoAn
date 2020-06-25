@@ -11,6 +11,7 @@ use App\Models\Products;
  use App\Helper\Cart;
  use Illuminate\Http\Request;
  use App\Models\User;
+ use App\Models\Nation;
  use App\Models\Customer;
  use App\Models\Order;
 
@@ -47,6 +48,17 @@ class FrontendController extends Controller
        return view('frontend.category',[
         'products'=>$pro,
         'cat'=>$cat
+    ]);
+
+   }
+    public function nation($id)
+    {
+       $pro=Products::join('nation','products.nation_id','=','nation.id')->where('products.nation_id','=',$id)->select('products.*')->paginate(10);
+       $nation= nation::find($id);
+
+       return view('frontend.nation',[
+        'products'=>$pro,
+        'nation'=>$nation
     ]);
 
    }

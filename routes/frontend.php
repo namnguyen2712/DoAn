@@ -21,6 +21,11 @@ Route::get('/danhmuc/{id}',[
 	'as'=>'danhmuc'
 
 ]);
+Route::get('/xuatxu/{id}',[
+	'uses'=>'FrontendController@nation',
+	'as'=>'xuatxu'
+
+]);
 Route::get('/sanpham',[
 	'uses'=>'FrontendController@product',
 	'as'=>'sanpham'
