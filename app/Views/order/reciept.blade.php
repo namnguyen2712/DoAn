@@ -4,7 +4,35 @@
 
 @section('box-body')
 	<!-- <form  method="POST" role="form"> -->
+	<div class="row">
+		<div class="container">
+	  <div class="row wizcontainer">
+	    <div class="col-sm-3 wizcols text-center startstatus clearfix">
+	      <div class="wizstatebase center-block wizstatedone">
+	        <span>Chọn nhà cung cấp</span>
 
+	      </div>
+	      <h4>Chọn nhà cung cấp</h4>
+	    </div>
+	    <div class="col-sm-3 wizcols text-center clearfix">
+	      <div class="wizstatebase center-block wizstatedone ">
+	        <span>Chọn sản phẩm</span>
+	        <img src="images/icn-order-dispached.svg" alt="" />
+	      </div>
+	      <h4>Chọn sản phẩm</h4>
+
+	    </div>
+	    <div class="col-sm-3 wizcols text-center clearfix">
+	      <div class="wizstatebase center-block wizstatetransit ">
+	        <span>Đơn hàng</span>
+	        <img src="images/icn-in-transit.svg" alt="" />
+	      </div>
+	      <h4>Đơn hàng</h4>
+	    </div>
+
+	  </div>
+	</div>
+	</div>
 		<div class="form-group">
 			<div class="row invoice-info">
 			  <div class="col-sm-4 invoice-col">

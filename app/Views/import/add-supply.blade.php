@@ -3,6 +3,35 @@
 @section('box-title','Chọn nhà cung cấp')
 
 @section('box-body')
+<div class="row">
+	<div class="container">
+  <div class="row wizcontainer">
+    <div class="col-sm-3 wizcols text-center startstatus clearfix">
+      <div class="wizstatebase center-block wizstatetransit">
+        <span>Chọn nhà cung cấp</span>
+
+      </div>
+      <h4>Chọn nhà cung cấp</h4>
+    </div>
+    <div class="col-sm-3 wizcols text-center clearfix">
+      <div class="wizstatebase center-block ">
+        <span>Chọn sản phẩm</span>
+        <img src="images/icn-order-dispached.svg" alt="" />
+      </div>
+      <h4>Chọn sản phẩm</h4>
+
+    </div>
+    <div class="col-sm-3 wizcols text-center clearfix">
+      <div class="wizstatebase center-block ">
+        <span>Đơn hàng</span>
+        <img src="images/icn-in-transit.svg" alt="" />
+      </div>
+      <h4>Đơn hàng</h4>
+    </div>
+
+  </div>
+</div>
+</div>
 <a href="{{route('backend.supply-create')}}" class="btn btn-success"  style="margin: 10px 0px 15px 0px ">
 	<i class="fa fa-plus"></i> <span>Thêm mới nhà cung cấp</span>
 </a>
