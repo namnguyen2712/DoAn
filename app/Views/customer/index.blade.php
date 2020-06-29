@@ -11,10 +11,11 @@
 	  <input type="text" class="form-control" name="name"  placeholder="Nhập tên khách hàng cần tìm kiếm">
 	</form>
 </div>
+<p>Tổng số: <b>{{$customers->count('id') }}</b> bản ghi </p>
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th>ID</th>
+			<th>Mã</th>
 			<th>Họ tên</th>
 			<th>Email</th>
 			<th>Địa chỉ</th>
@@ -30,11 +31,11 @@
 			<td>{{$cus->email}}</td>
 			<td>{{$cus->address}}</td>
 			<td>{{$cus->phone}}</td>
-			<td><a href="{{route('backend.customer-edit',[$cus->id])}}'"  ><span class="glyphicon glyphicon-pencil" style="color: blue"></span></a></td>
+			<td><a href="{{route('backend.customer-edit',[$cus->id])}}'"  ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a></td>
 		</tr>
 		@endforeach()
 	</tbody>
-	
+
 </table>
 
 <div class="text-center">

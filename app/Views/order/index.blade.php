@@ -2,26 +2,30 @@
 @section('title','QUẢN LÝ BÁN HÀNG')
 @section('box-title','Danh sách hóa đơn bán')
 @section('box-body')
-<div class="col-lg-3 row">
+<div class="col-lg-12 row">
+<div class="row">
 	<a href="{{ route('backend.order-add-supply') }}" title="Tạo hóa đơn" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Tạo mới hóa đơn bán</span>
 	</a>
-</div>
-<div class="col-lg-9">
+
 	<a href="" title="Xuất báo cáo" id="saveAsExcelOrder" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-file-excel-o"></i> <span>Xuất file Excel</span>
 	</a>
 </div>
-<div class=" col-lg-5 row">
+</div>
+<div class="col-lg-12 row">
+
+
+<div class=" col-lg-5 ">
 	<form action="{{route('backend.order-get-date')}}" method="GET">
 			<input type="date" class="form-control" name="date"  >
 </div>
-<div class="col-lg-1 ">
+<div class="col-lg-1 row">
 	<button type="submit" class="btn btn-success" name="button">Nạp</button>
 </div>
 	</form>
 
-	<div class=" col-lg-5 row">
+	<div class=" col-lg-5 ">
 		<form action="{{route('backend.order-get-month')}}" method="GET">
 			<select name="month"  class="form-control" required>
 				<option value="">Chọn tháng</option>
@@ -34,27 +38,31 @@
 
 		    </select>
 	</div>
-	<div class="col-lg-1 ">
+	<div class="col-lg-1 row">
 		<button type="submit" class="btn btn-success" name="button">Nạp</button>
 	</div>
 		</form>
+</div>
 <div class="col-lg-12 row box-body">
-	<div class="col-lg-4">
+	<div class="col-lg-4 ">
 		<form  action="{{route('backend.search-customer-order')}}" method="GET">
 			<input type="text" name="phone_customer" class="form-control" placeholder="Nhập số điện thoại khách hàng cần tìm kiếm">
 		</form>
 	</div>
-	<div class="col-lg-4">
+	<div class="col-lg-4 ">
 		<form  action="{{route('backend.search-employee-order')}}" method="GET">
 			<input type="text" class="form-control" name="name_employee" placeholder="Nhập tên nhân viên lập cần tìm kiếm">
 		</form>
 	</div>
-	<div class="col-lg-4">
+	<div class="col-lg-4 ">
 		<form  action="{{route('backend.search-order')}}" method="GET">
 			<input type="text" class="form-control" name="id" placeholder="Nhập số hóa cần tìm kiếm">
 		</form>
 	</div>
 </div>
+
+	<p>Tổng số: <b>{{$order->count('id') }}</b> bản ghi </p>
+
 
 	<table id="list-order" class="table table-hover">
 		<tr>

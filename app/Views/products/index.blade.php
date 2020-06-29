@@ -8,7 +8,7 @@
 		<i class="fa fa-plus"></i> <span>Thêm mới sản phẩm</span>
 	</a>
 	<a href="{{route('backend.products-report')}}" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
-		<i class="fa fa-plus"></i> <span>Báo cáo hàng tồn kho</span>
+		<i class="fa fa-flag-checkered"></i> <span>Báo cáo hàng tồn kho</span>
 	</a>
 	<div class="form-group">
 		<form action="{{route('backend.search-product')}}" method="GET">
@@ -31,6 +31,10 @@
 		</div>
 
 		</div>
+	</div>
+	<div class="box-body">
+		<p>Tổng số: <b>{{$products->count('id') }}</b> bản ghi </p>
+
 	</div>
 <table class="table table-hover">
 	<thead>
@@ -65,7 +69,7 @@
 
 			<td>{{$pro->quantity}}</td>
 			<td>
-				<a href="{{route('backend.products-edit',[$pro->id])}}'"  ><span class="glyphicon glyphicon-pencil" style="color: blue"></span></a>
+				<a href="{{route('backend.products-edit',[$pro->id])}}'"  ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>
 				<a href="{{ route('backend.products-delete',[$pro->id])}}"  onclick="return confirm('Bạn muốn xóa sản phẩm này')" title="Xóa"><span class="glyphicon glyphicon-trash" style="color: red"></span></a>
 			</td>
 
@@ -73,7 +77,7 @@
 		@endforeach()
 
 	</tbody>
-	
+
 </table>
 <div class="text-center">
 	{{ $products->links() }}

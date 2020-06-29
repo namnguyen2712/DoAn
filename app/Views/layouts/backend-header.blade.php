@@ -17,7 +17,7 @@
         <span class="icon-bar"></span>
       </a>
       <ul class="nav navbar-nav">
-          <li><a href="" style="font-size: 1.5em;">Hệ thống: <?php echo date("d-m-Y H:i:s"); ?></a></li></h4 >
+          <li><a href="" style="font-size: 1.5em;">Hệ thống: <?php echo date("d-m-Y H:i"); ?></a></li></h4 >
       </ul>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">

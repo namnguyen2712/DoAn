@@ -3,16 +3,22 @@
 @section('box-title','Danh sách phiếu nhập')
 
 @section('box-body')
-<div class="col-lg-3 row">
+<div class="col-lg-12">
+
+
+<div class="row">
 	<a href="{{ route('backend.import-add-supply') }}" title="Tạo hóa đơn" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Tạo phiếu nhập hàng</span>
 	</a>
-</div>
-<div class="col-lg-9">
+
 	<a href="" title="Xuất excel báo cáo" class="btn btn-success" id="saveAsExcelImport" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-file-excel-o"></i> <span>Xuất file Excel</span>
 	</a>
 </div>
+</div>
+<div class="col-lg-12 row">
+
+
 <div class=" col-lg-5 row">
 	<form action="{{route('backend.import-get-date')}}" method="GET">
 			<input type="date" class="form-control" name="date"  >
@@ -40,6 +46,7 @@
 		<button type="submit" class="btn btn-success" name="button">Nạp</button>
 	</div>
 		</form>
+		</div>
 <div class="col-lg-12 row box-body">
 	<div class="col-lg-4">
 		<form  action="{{route('backend.search-supply-import')}}" method="GET">
@@ -57,7 +64,7 @@
 		</form>
 	</div>
 </div>
-
+<p>Tổng số: <b>{{$import->count('id') }}</b> bản ghi </p>
 	<table id="list-import" class="table table-hover">
 		<tr>
 			<td colspan="7"><div class="hidden">

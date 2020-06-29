@@ -23,7 +23,7 @@ class ImportController extends Controller
     public function index(Cart $cart)
     {
         $cart->clear();
-        $import = Import::orderBy('created_at','DESC')->paginate(15);
+        $import = Import::orderBy('created_at','DESC')->paginate(20);
         return view('import.index',[
             'import' => $import
         ]);

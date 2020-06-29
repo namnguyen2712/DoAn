@@ -445,7 +445,7 @@ function btnDelSupply(id) {
 	});
 }
 
-//trường
+
 loadDataCat();
 function loadDataCat(){
 	$("#tbody-category").empty();
@@ -465,9 +465,9 @@ function loadDataCat(){
 				table += item['name'];
 				table += '</td>';
 				table += '<td>';
-				table += '<a href="/demo/backend/category-edit/'+item['id']+'" class="btn btn-app  bg-green" ><i class="fa fa-pencil"></i><span> Sửa</span></a>';
-				table += '<button type="button" class="btn btn-app bg-red" onclick="btnDelCat('+item['id']+')">';
-				table += '<i class="fa fa-trash"></i><span> Xóa</span>';
+				table += '<a href="/demo/backend/category-edit/'+item['id']+'"  ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>';
+				table += '<button type="button" onclick="btnDelCat('+item['id']+')">';
+				table += '<span class="fa fa-trash" style="color: red"></span>';
 				table += '</button>';
 				table += '</td>';
 				table += '</tr>';
@@ -567,7 +567,7 @@ function loadDataUnit(){
 				table += item['name'];
 				table += '</td>';
 				table += '<td>';
-				table += '<a href="/demo/backend/unit-edit/'+item['id']+'" class="btn btn-app  bg-green" ><i class="fa fa-pencil"></i><span> Sửa</span></a>';
+				table += '<a href="/demo/backend/unit-edit/'+item['id']+'"  ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>';
 				table += '</td>';
 				table += '</tr>';
 			})
@@ -667,7 +667,7 @@ function loadDataNation(){
 				table += item['name'];
 				table += '</td>';
 				table += '<td>';
-				table += '<a href="/demo/backend/nation-edit/'+item['id']+'" class="btn btn-app  bg-green" ><i class="fa fa-pencil"></i><span> Sửa</span></a>';
+				table += '<a href="/demo/backend/nation-edit/'+item['id']+'" ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>';
 				table += '</td>';
 				table += '</tr>';
 			})

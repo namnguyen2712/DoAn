@@ -11,10 +11,11 @@
 		  <input type="text" class="form-control" name="name"  placeholder="Nhập tên nhân viên cần tìm kiếm">
 		</form>
 	</div>
+	<p>Tổng số: <b>{{$users->count('id') }}</b> bản ghi </p>
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th>Username</th>
+			<th>Tên đăng nhập</th>
 			<th>Họ tên</th>
 			<th>Email</th>
 			<th>Địa chỉ</th>
@@ -41,13 +42,13 @@
 			<td>{{$user->phone}}</td>
 			<td>{{$role->name}}</td>
 			<td>
-				<a href="{{route('backend.user-edit',[$user->id])}}'" title="Sửa" ><span class="glyphicon glyphicon-pencil" style="color: blue"></span></a>
+				<a href="{{route('backend.user-edit',[$user->id])}}'" title="Sửa" ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>
 				<a href="{{ route('backend.user-delete',[$user->id])}}" onclick="return confirm('Bạn muốn xóa nhân viên này')" title="Xóa"><span class="glyphicon glyphicon-trash" style="color: red"></span></a>
 			</td>
 		</tr>
 		@endforeach()
 	</tbody>
-	
+
 </table>
 <div class="text-center">
 	{{ $users->links() }}

@@ -11,6 +11,10 @@
 			  <input type="text" class="form-control" name="name"  placeholder="Nhập tên nhà cung cấp cần tìm kiếm">
 			</form>
 		</div>
+		<div>
+			<p>Tổng số: <b>{{$supplys->count('id') }}</b> bản ghi </p>
+
+		</div>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -31,13 +35,13 @@
 				<td>{{$supply->email}}</td>
 				<td>{{$supply->explain}}</td>
 				<td>
-					<a href="{{route('backend.supply-edit',[$supply->id])}}'" title="Sửa" ><span class="glyphicon glyphicon-pencil" style="color: blue"></span></a>
+					<a href="{{route('backend.supply-edit',[$supply->id])}}'" title="Sửa" ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>
 					<a href="{{ route('backend.supply-delete',[$supply->id])}}" onclick="return confirm('Bạn muốn xóa nhà cung cấp này')" title="Xóa"><span class="glyphicon glyphicon-trash" style="color: red"></span></a>
 				</td>
 			</tr>
 			@endforeach()
 		</tbody>
-		
+
 	</table>
 	<div class="text-center">
 		{{ $supplys->links() }}

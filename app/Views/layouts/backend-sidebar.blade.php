@@ -104,12 +104,30 @@
                 </a>
             </li>
             @endif
-            @if(($roleUser->id==1 || $roleUser->id==3))
 
-            <li>
-                <a href="{{route('backend.order-report')}}">
-                    <i class="fa fa-flag-o"></i> <span>Báo cáo doanh thu</span>
-                </a>
+            @if(($roleUser->id==1 || $roleUser->id==3))
+            <li class="treeview">
+            <a href="#">
+              <i class="fa fa-flag"></i>
+              <span>Báo cáo</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{route('backend.order-report')}}">
+                        <i class="fa fa-flag-o"></i> <span>Báo cáo doanh thu</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('backend.products-report')}}">
+                        <i class="fa fa-flag-checkered"></i> <span>Báo cáo hàng tồn kho</span>
+                    </a>
+                </li>
+
+            </ul>
             </li>
             @endif
 
