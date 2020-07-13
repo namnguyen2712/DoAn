@@ -70,6 +70,7 @@
       </div>
     </div>
 </div>
+<p>Tổng số: <b>{{$order->count('id') }}</b> bản ghi </p>
         <table id="list-order-employee" class="table table-hover">
     		<tr>
     			<td colspan="7"> <div class="hidden">

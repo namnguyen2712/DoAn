@@ -207,7 +207,7 @@ function btnDelUser(id) {
 
 
 
-//nam
+
 loadDataPro();
 function loadDataPro(){
 	$("#tbody-products").empty();
@@ -343,7 +343,7 @@ function btnDelPro(id) {
 		}
 	});
 }
-//thành
+
 loadDataSupply();
 function loadDataSupply(){
 	$("#tbody-supply").empty();

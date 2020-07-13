@@ -6,6 +6,7 @@
 				<a href="{{route('backend.role-create')}}" class="btn btn-success"  style="margin: 10px 0px 15px 0px ">
 					<i class="fa fa-plus"></i> <span>Thêm mới nhóm quyền</span>
 				</a>
+				<p>Tổng số: <b>{{$role->count('id') }}</b> bản ghi </p>
 				<table class="table table-hover">
 					<thead>
 						<tr>

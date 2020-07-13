@@ -5,7 +5,7 @@
 <a href="{{route('backend.permission-create')}}" class="btn btn-success"  style="margin: 10px 0px 15px 0px ">
 	<i class="fa fa-plus"></i> <span>Thêm mới chức năng</span>
 </a>
-
+<p>Tổng số: <b>{{$permissions->count('id') }}</b> bản ghi </p>
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
@@ -27,7 +27,7 @@
                     			</tr>
                     	@endforeach()
 					</tbody>
-					
+
 				</table>
 
 
