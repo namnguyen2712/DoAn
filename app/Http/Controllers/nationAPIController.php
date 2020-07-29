@@ -112,8 +112,15 @@ class nationAPIController extends Controller
      */
     public function destroy($id)
     {
-        nation::destroy($id);
-        return 1;
+        $products= DB::table('products')->where('nation_id',$id)->count('*');
+        if ($products == 0) {
+            nation::destroy($id);
+            return 1;
+       }else{
+           return 0;
+
+       }
+
 
     }
 }

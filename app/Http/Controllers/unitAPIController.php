@@ -35,7 +35,7 @@ class unitAPIController extends Controller
     public function store(Request $request)
     {
 
-        
+
          if(unit::Create([
              'name' => $request->name,
         ]))
@@ -102,8 +102,14 @@ class unitAPIController extends Controller
      */
     public function destroy($id)
     {
-        unit::destroy($id);
-        return 1;
+        $products= DB::table('products')->where('unit',$id)->count('*');
+        if ($products == 0) {
+            unit::destroy($id);
+            return 1;
+       }else{
+           return 0;
+
+       }
 
     }
 }

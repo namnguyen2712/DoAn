@@ -16,6 +16,7 @@
 			<th>Tên sản phẩm</th>
 			<th>Loại sản phẩm</th>
 			<th>SL hàng trong kho</th>
+			<th>Đơn vị</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,6 +29,11 @@
 			?>
 			<td>{{$cat->name}}</td>
 			<td>{{$pro->quantity}}</td>
+
+			<?php
+				$unit=DB::table('unit')->select('name')->where('id',$pro->unit_id)->first();
+			?>
+			<td>{{$unit->name}}</td>
 		</tr>
 		@endforeach()
 

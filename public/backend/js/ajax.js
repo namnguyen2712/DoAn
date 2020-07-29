@@ -465,9 +465,9 @@ function loadDataCat(){
 				table += item['name'];
 				table += '</td>';
 				table += '<td>';
-				table += '<a href="/demo/backend/category-edit/'+item['id']+'"  ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>';
-				table += '<button type="button" onclick="btnDelCat('+item['id']+')">';
-				table += '<span class="fa fa-trash" style="color: red"></span>';
+				table += '<a href="/demo/backend/category-edit/'+item['id']+'"  > <button class="btn btn-success btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button></a>';
+				table += '<button class="btn btn-danger btn-rounded btn-condensed btn-sm"  type="button" onclick="btnDelCat('+item['id']+')">';
+				table += '<span class="fa fa-trash" ></span>';
 				table += '</button>';
 				table += '</td>';
 				table += '</tr>';
@@ -530,7 +530,7 @@ function btnEditCat(id){
 				alert("Sửa thành công");
 				location.href = "http://localhost:8080/demo/backend/category";
 			}else{
-				alert("that bai");
+				alert("Sửa thất bại");
 			}
 		}
 	});
@@ -542,9 +542,17 @@ function btnDelCat(id) {
 		method: "DELETE",
 		dataType: "json",
 		success:function(res){
-			alert("Xóa thành công");
-			loadDataCat();
+			if (res == 1) {
+				alert("Xóa thành công");
+				loadDataCat();
+
+			}else{
+				alert("Xóa thất bại");
+				loadDataCat();
+			}
 		}
+
+
 	});
 }
 
@@ -642,8 +650,14 @@ function btnDelUnit(id) {
 		method: "DELETE",
 		dataType: "json",
 		success:function(res){
-			alert("Xóa thành công");
-			loadDataUnit();
+			if (res == 1) {
+				alert("Xóa thành công");
+				loadDataUnit();
+
+			}else{
+				alert("Xóa thất bại");
+				loadDataUnit();
+			}
 		}
 	});
 }
@@ -742,8 +756,15 @@ function btnDelNation(id) {
 		method: "DELETE",
 		dataType: "json",
 		success:function(res){
-			alert("Xóa thành công");
-			loadDataNation();
+			if (res == 1) {
+				alert("Xóa thành công");
+				loadDataNation();
+
+			}else{
+				alert("Xóa thất bại");
+				loadDataNation();
+			}
 		}
+
 	});
 }

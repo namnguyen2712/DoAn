@@ -203,7 +203,11 @@ class productsController extends Controller
      * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-
+     public function delete($id)
+     {
+         products::destroy($id);
+         return redirect()->route('backend.products');
+     }
      public function report()
     {
         $product= products::orderBy('quantity','DESC')->where('quantity','>',0)->get();
