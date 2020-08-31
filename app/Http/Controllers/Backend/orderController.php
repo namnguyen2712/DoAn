@@ -209,7 +209,7 @@ class orderController extends Controller
     public function search_customer(Request $request){
         $phone = $request->phone;
         if($phone != ''){
-            $customer = customer::where('phone','like','%'.$phone.'%')->get();
+            $customer = customer::where('phone','like','%'.$phone.'%')->paginate(10);
             return view('order.add-supply',[
                 'customer' =>$customer
             ]);
@@ -220,7 +220,7 @@ class orderController extends Controller
     public function add_order($id, Cart $cart,$s_id){
         $product = Products::find($id)->toArray();
         $cart->add($product,$product['price']);
-        return redirect()->route('backend.order-add-product',['s_id'=>$s_id])->with('success','Đã thêm vào giỏ hàng');
+        return redirect()->route('backend.order-add-product',['s_id'=>$s_id]);
     }
     public function remove_order($id, Cart $cart,$s_id){
         $cart->remove($id);

@@ -1,12 +1,36 @@
 @extends('layouts.backend')
 @section('title','QUẢN LÝ SẢN PHẨM')
 @section('box-body')
+<?php
+	$roleUser = DB::table('user')
+	->join('user_roles','user.id','=','user_roles.user_id')
+	->join('roles','user_roles.role_id','=','roles.id')
+	->where('user.id','=',Auth()->guard('admin')->user()->id)
+	->select('*')
+	->first();
+	$listRoleOfUser = DB::table('user')
+	  ->join('user_roles', 'user.id', '=', 'user_roles.user_id')
+	  ->join('roles', 'user_roles.role_id', '=', 'roles.id')
+	  ->where('user.id',Auth()->guard('admin')->user()->id)
+	  ->select('roles.*')
+	  ->get()->pluck('id')->toArray();
 
-
+	  $listRoleOfUser = DB::table('roles')
+	  ->join('roles_permissions', 'roles.id', '=', 'roles_permissions.role_id')
+	  ->join('permissions','roles_permissions.permission_id', '=', 'permissions.id')
+	  ->whereIn('roles.id',$listRoleOfUser) // lấy giá trị tại id
+	  ->select('permissions.*')
+	  ->get()->pluck('id')->unique();
+	  $checkPermissionAddProduct =  DB::table('permissions')->where('name','product-create')->value('id');
+	  $checkPermissionEditProduct =  DB::table('permissions')->where('name','product-edit')->value('id');
+	  $checkPermissionDeleteProduct =  DB::table('permissions')->where('name','product-delete')->value('id');
+  ?>
+	@if($listRoleOfUser->contains($checkPermissionAddProduct))
 
 	<a href="{{route('backend.products-create')}}" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Thêm mới sản phẩm</span>
 	</a>
+	@endif
 	<a href="{{route('backend.products-report')}}" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-flag-checkered"></i> <span>Báo cáo hàng tồn kho</span>
 	</a>
@@ -69,8 +93,12 @@
 
 			<td>{{$pro->quantity}}</td>
 			<td>
+				@if($listRoleOfUser->contains($checkPermissionEditProduct))
 				<a href="{{route('backend.products-edit',[$pro->id])}}'"  ><span class="glyphicon glyphicon-pencil" style="color: green"></span></a>
+				@endif
+				@if($listRoleOfUser->contains($checkPermissionDeleteProduct))
 				<a href="{{ route('backend.products-delete',[$pro->id])}}"  onclick="return confirm('Bạn muốn xóa sản phẩm này')" title="Xóa"><span class="glyphicon glyphicon-trash" style="color: red"></span></a>
+				@endif
 			</td>
 
 		</tr>

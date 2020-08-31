@@ -2,11 +2,36 @@
 @section('title','QUẢN LÝ BÁN HÀNG')
 @section('box-title','Danh sách hóa đơn bán')
 @section('box-body')
+<?php
+	$roleUser = DB::table('user')
+	->join('user_roles','user.id','=','user_roles.user_id')
+	->join('roles','user_roles.role_id','=','roles.id')
+	->where('user.id','=',Auth()->guard('admin')->user()->id)
+	->select('*')
+	->first();
+	$listRoleOfUser = DB::table('user')
+	  ->join('user_roles', 'user.id', '=', 'user_roles.user_id')
+	  ->join('roles', 'user_roles.role_id', '=', 'roles.id')
+	  ->where('user.id',Auth()->guard('admin')->user()->id)
+	  ->select('roles.*')
+	  ->get()->pluck('id')->toArray();
+
+	  $listRoleOfUser = DB::table('roles')
+	  ->join('roles_permissions', 'roles.id', '=', 'roles_permissions.role_id')
+	  ->join('permissions','roles_permissions.permission_id', '=', 'permissions.id')
+	  ->whereIn('roles.id',$listRoleOfUser) // lấy giá trị tại id
+	  ->select('permissions.*')
+	  ->get()->pluck('id')->unique();
+	  $checkPermissionAddOrder =  DB::table('permissions')->where('name','order-create')->value('id');
+	  $checkPermissionDeleteOrder =  DB::table('permissions')->where('name','order-delete')->value('id');
+  ?>
 <div class="col-lg-12 row">
 <div class="row">
+	@if($listRoleOfUser->contains($checkPermissionAddOrder))
 	<a href="{{ route('backend.order-add-supply') }}" title="Tạo hóa đơn" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-plus"></i> <span>Tạo mới hóa đơn bán</span>
 	</a>
+	@endif
 
 	<a href="" title="Xuất báo cáo" id="saveAsExcelOrder" class="btn btn-success" style="margin: 10px 0px 15px 0px ">
 		<i class="fa fa-file-excel-o"></i> <span>Xuất file Excel</span>
@@ -119,7 +144,9 @@
 					{{date('d/m/Y ', strtotime($i->created_at))}}
 				</td>
 				<td>
+					@if($listRoleOfUser->contains($checkPermissionDeleteOrder))
 					<a href="{{ route('backend.order-delete',['id'=> $i->id]) }}" title="Xóa đơn hàng" onclick="return confirm('Bạn muốn xóa đơn hàng này')"><span class="glyphicon glyphicon-trash" style="color: red"></span></a>
+					@endif
 					<a href="{{ route('backend.order-detail',['id'=> $i->id]) }}" title="Chi tiết" ><span class="glyphicon glyphicon-info-sign" style="color: green"></span></a>
 				</td>
 			</tr>

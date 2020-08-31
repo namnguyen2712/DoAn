@@ -72,4 +72,7 @@
 		@endforeach
 	</tbody>
 </table>
+<div class="text-center">
+	{{ $customer->links() }}
+</div>
 @stop()

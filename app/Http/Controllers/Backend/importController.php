@@ -223,7 +223,7 @@ class ImportController extends Controller
         $price = $request->price ? $request->price : 1000;
         if($request->id){
             $cart->update($request->id,$request->price,$quantity);
-            return redirect()->route('backend.import-reciept',['s_id'=>$request->s_id])->with('success','Cập nhật thành công');
+            return redirect()->route('backend.import-reciept',['s_id'=>$request->s_id]);
         }
     }
 

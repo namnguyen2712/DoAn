@@ -20,7 +20,7 @@ class supplyController extends Controller
             'supplys'=>$supply
         ]);
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *

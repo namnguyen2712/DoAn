@@ -40,12 +40,17 @@
 				  <th>Mã sản phẩm</th>
 				  <th>Thành phần</th>
 				  <th>Hàm lượng</th>
+				  <th>Xuất xứ</th>
 				</thead>
 				<tbody>
+                    <?php
+        				$nation=DB::table('nation')->select('name')->where('id',$pro->nation_id)->first();
+        			?>
 				  <tr>
 					<th scope="row">{{$pro->id}}</th>
 					<th scope="row">{{$pro->ingredient}}</th>
 					<td>{{$pro->content}}</td>
+					<td>{{$nation->name}}</td>
 				  </tr>
 
 

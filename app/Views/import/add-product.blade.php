@@ -48,6 +48,7 @@
 			<th>Tên sản phẩm</th>
 			<th>Giá bán tại cửa hàng</th>
 			<th>Loại sản phẩm</th>
+			<th>Ảnh</th>
 			<th>Trạng thái</th>
 			<th></th>
 		</tr>
@@ -65,7 +66,7 @@
 			<td>{{number_format($pro->price,0,'','.')}}</td>
 			<td>{{$cat->name}}</td>
 
-
+			<td><img src="{{ url('/')}}/public/img/{{ $pro->images1 }}" style="width: 50px; height: 60px;">
 			<td>
 				@if($pro->status != '0')
 					<a href="{{ route('backend.add-import',['id'=>$pro->id,'s_id'=>$s->id]) }}" class="add-import-quick" title="Thêm vào giỏ hàng" id="click_cart" data-id='{{ $pro->id }}'><i class="glyphicon glyphicon-plus" style="color: green;"></i></a>

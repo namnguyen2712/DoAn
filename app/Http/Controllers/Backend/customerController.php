@@ -108,12 +108,12 @@ class customerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, customer $customer)
+    public function update(Request $request, $id)
     {
         $model = customer::find($id);
         $this->validate($request,[
-            'name'=> 'required|min:3|max:30|unique:customers,name',
-            'email' => 'required|unique:customer,email',
+            'name'=> 'required|min:3|max:30',
+            'email' => 'required',
             'address' => 'required',
             'phone' => 'required',
             'sex' => 'required',
@@ -122,7 +122,6 @@ class customerController extends Controller
             'name.required'=> 'Chưa nhập tài khoản',
             'name.min'=> 'Tài khoản từ 3 đến 30 kí tự',
             'name.max'=> 'Tài khoản từ 3 đến 30 kí tự',
-            'name.unique'=> 'Tài khoản đã tồn tại',
             'email.required'=> 'Bạn phải nhập email',
             'address.required'=> 'Bạn phải nhập địa chỉ',
             'phone.required'=> 'Bạn phải nhập số điện thoại',
